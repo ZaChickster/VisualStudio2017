@@ -1,9 +1,9 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:65433/",
+      "applicationUrl": "http://localhost:50847/",
       "sslPort": 0
     }
   },
@@ -16,12 +16,7 @@
       }
     },
     "VisualStudio2017.Web": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:65434"
+      "commandName": "Project"
     }
   }
 }
