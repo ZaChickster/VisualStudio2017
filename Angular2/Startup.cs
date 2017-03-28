@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace VisualStudio2017_Web
+namespace VisualStudio2017.Angular2
 {
     public class Startup
     {
