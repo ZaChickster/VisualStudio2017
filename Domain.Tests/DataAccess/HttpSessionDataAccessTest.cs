@@ -12,19 +12,13 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 	public class HttpSessionDataAccessTest
     {
 		private HttpSessionDataAccess _dataAccess;
-		private Mock<ISession> _session;
+		private Mock<ISessionWrapper> _session;
 
 		[TestInitialize]
 		public void Startup()
 		{
-			Mock<IHttpContextAccessor> accessor = new Mock<IHttpContextAccessor>();
-			Mock<HttpContext> context = new Mock<HttpContext>();
-			_session = new Mock<ISession>();
-
-			accessor.Setup(a => a.HttpContext).Returns(() => context.Object);
-			context.Setup(c => c.Session).Returns(() => _session.Object);
-
-			_dataAccess = new HttpSessionDataAccess(accessor.Object);
+			_session = new Mock<ISessionWrapper>();
+			_dataAccess = new HttpSessionDataAccess(_session.Object);
 		}
 
 		[TestMethod]
@@ -32,9 +26,10 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 		{
 			string nu11 = null;
 
-			_session.Setup(s => s.GetString(HttpSessionDataAccess.ITEMS_KEY)).Returns(nu11);
+			_session.Setup(s => s.Get(HttpSessionDataAccess.ITEMS_KEY)).Returns(nu11);
 
-			Assert.IsTrue(_dataAccess.GetAll() == null);
+			Assert.IsTrue(_dataAccess.GetAll() != null);
+			Assert.IsTrue(_dataAccess.GetAll().Count == 0);
 		}
     }
 }

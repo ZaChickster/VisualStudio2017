@@ -10,17 +10,17 @@ namespace VisualStudio2017.Domain.DataAccess
     {
 		public const string ITEMS_KEY = "_session-Items-k3y";
 
-		private readonly ISession _session;
+		private readonly ISessionWrapper _session;
 
-		public HttpSessionDataAccess(IHttpContextAccessor session)
+		public HttpSessionDataAccess(ISessionWrapper session)
 		{
-			_session = session.HttpContext.Session;
+			_session = session;
 		}
 
 		public List<WorkItem> GetAll()
 		{
 			List<WorkItem> items = new List<WorkItem>();
-			string raw = _session.GetString(ITEMS_KEY);
+			string raw = _session.Get(ITEMS_KEY);
 
 			if (!string.IsNullOrEmpty(raw))
 			{
