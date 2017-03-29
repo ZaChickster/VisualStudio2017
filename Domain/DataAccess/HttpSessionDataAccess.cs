@@ -6,13 +6,13 @@ using System.Text;
 
 namespace VisualStudio2017.Domain.DataAccess
 {
-    public class HttpSessionImplementation
+    public class HttpSessionDataAccess
     {
 		public const string ITEMS_KEY = "_session-Items-k3y";
 
 		private readonly ISession _session;
 
-		public HttpSessionImplementation(IHttpContextAccessor session)
+		public HttpSessionDataAccess(IHttpContextAccessor session)
 		{
 			_session = session.HttpContext.Session;
 		}
