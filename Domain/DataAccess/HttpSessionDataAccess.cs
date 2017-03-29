@@ -7,15 +7,6 @@ using System.Linq;
 
 namespace VisualStudio2017.Domain.DataAccess
 {
-	public interface IAppDataAccess
-	{
-		List<WorkItem> GetAll();
-		WorkItem GetOne(int id);
-		WorkItem Add(WorkItem item);
-		WorkItem Update(WorkItem changed);
-		WorkItem Delete(int id);
-	}
-
 	public class HttpSessionDataAccess : IAppDataAccess
 	{
 		public const string ITEMS_KEY = "_session-Items-k3y";

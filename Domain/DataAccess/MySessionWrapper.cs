@@ -5,12 +5,6 @@ using System.Text;
 
 namespace VisualStudio2017.Domain.DataAccess
 {
-	public interface ISessionWrapper
-	{
-		void Set(string key, string json);
-		string Get(string key);
-	}
-
 	public class MySessionWrapper : ISessionWrapper
     {
 		private readonly ISession _session;
