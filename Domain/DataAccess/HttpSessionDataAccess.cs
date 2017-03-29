@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace VisualStudio2017.Domain.DataAccess
 {
@@ -29,6 +30,25 @@ namespace VisualStudio2017.Domain.DataAccess
 			}
 
 			return items;
+		}
+
+		public WorkItem GetOne(int id)
+		{
+			List<WorkItem> items = GetAll();
+
+			return items.Find(i => i.Id == id);
+		}
+
+		public WorkItem Add(WorkItem item)
+		{
+			List<WorkItem> items = GetAll();
+
+			int newId = items.Max(i => i.Id) + 1;
+			item.Id = newId;
+
+			items.Add(item);
+
+			return item;
 		}
 	}
 }
