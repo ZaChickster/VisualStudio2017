@@ -201,6 +201,7 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 
 			Assert.IsTrue(item.Id == 15);
 		}
+
 		[TestMethod]
 		public void Update_ShouldReplaceItem_WhenCalled()
 		{
@@ -227,6 +228,33 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 
 			Assert.IsTrue(_dataAccess.GetAll().Count == 3);
 			Assert.IsTrue(_dataAccess.GetOne(2).Name == "Hello, I've changed");
+		}
+
+		[TestMethod]
+		public void Delete_ShouldRemoveItem_WhenCalled()
+		{
+			string hydrated = @"[
+				{
+					Id: 1,
+					Name: 'n1'	
+				},
+				{
+					Id: 2,
+					Name: 'n2'	
+				},
+				{
+					Id: 3,
+					Name: 'n3'	
+				}
+			]";
+
+			FakeSession fake = new FakeSession();
+			fake.Set(HttpSessionDataAccess.ITEMS_KEY, hydrated);
+			_dataAccess = new HttpSessionDataAccess(fake);
+
+			WorkItem item = _dataAccess.Delete(2);
+
+			Assert.IsTrue(_dataAccess.GetAll().Count == 2);
 		}
 	}
 }

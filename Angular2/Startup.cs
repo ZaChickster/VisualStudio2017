@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using VisualStudio2017.Domain.DataAccess;
 
 namespace VisualStudio2017.Angular2
 {
@@ -30,6 +31,8 @@ namespace VisualStudio2017.Angular2
         public void ConfigureServices(IServiceCollection services)
         {
 			services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+			services.AddScoped<ISessionWrapper, MySessionWrapper>();
+			services.AddScoped<IAppDataAccess, HttpSessionDataAccess>();
 
 			// Add framework services.
 			services.AddMvc();
