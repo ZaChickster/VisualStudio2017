@@ -33,7 +33,8 @@ namespace VisualStudio2017.Angular2
 
 			// Add framework services.
 			services.AddMvc();
-        }
+			services.AddSession();
+		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -54,8 +55,8 @@ namespace VisualStudio2017.Angular2
             }
 
             app.UseStaticFiles();
-
-            app.UseMvc(routes =>
+			app.UseSession();
+			app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
