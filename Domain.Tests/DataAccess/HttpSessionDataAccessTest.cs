@@ -79,7 +79,7 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 		}
 
 		[TestMethod]
-		public void GetAll_ShouldReturnItem_WhenItemExists()
+		public void GetOne_ShouldReturnItem_WhenItemExists()
 		{
 			string hydrated = @"[
 				{
@@ -104,7 +104,7 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 		}
 
 		[TestMethod]
-		public void GetAll_ShouldReturnNull_WhenItemMissing()
+		public void GetOne_ShouldReturnNull_WhenItemMissing()
 		{
 			string hydrated = @"[
 				{
@@ -124,6 +124,54 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 			_session.Setup(s => s.Get(HttpSessionDataAccess.ITEMS_KEY)).Returns(hydrated);
 
 			Assert.IsTrue(_dataAccess.GetOne(4) == null);
+		}
+
+		[TestMethod]
+		public void Add_ShouldUseMaxId_WhenAdding()
+		{
+			string hydrated = @"[
+				{
+					Id: 1,
+					Name: 'n1'	
+				},
+				{
+					Id: 2,
+					Name: 'n2'	
+				},
+				{
+					Id: 3,
+					Name: 'n3'	
+				}
+			]";
+
+			_session.Setup(s => s.Get(HttpSessionDataAccess.ITEMS_KEY)).Returns(hydrated);
+			WorkItem item = _dataAccess.Add(new WorkItem { Name = "n4" });
+
+			Assert.IsTrue(item.Id == 4);
+		}
+
+		[TestMethod]
+		public void Add_ShouldUseMaxId_WhenAddingOutOfSync()
+		{
+			string hydrated = @"[
+				{
+					Id: 1,
+					Name: 'n1'	
+				},
+				{
+					Id: 2,
+					Name: 'n2'	
+				},
+				{
+					Id: 14,
+					Name: 'n14'	
+				}
+			]";
+
+			_session.Setup(s => s.Get(HttpSessionDataAccess.ITEMS_KEY)).Returns(hydrated);
+			WorkItem item = _dataAccess.Add(new WorkItem { Name = "n15" });
+
+			Assert.IsTrue(item.Id == 15);
 		}
 	}
 }
