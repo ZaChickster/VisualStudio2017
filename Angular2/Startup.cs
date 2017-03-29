@@ -30,17 +30,24 @@ namespace VisualStudio2017.Angular2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddScoped<ISessionWrapper, MySessionWrapper>();
 			services.AddScoped<IAppDataAccess, HttpSessionDataAccess>();
 
 			// Add framework services.
 			services.AddMvc();
-			services.AddSession();
+			services.AddMemoryCache();
+			services.AddSession(options =>
+			{
+				// Set a short timeout for easy testing.
+				options.IdleTimeout = TimeSpan.FromMinutes(30);
+				options.CookieHttpOnly = false;
+				options.CookieName = "_some_stupid_name_";
+			});
 		}
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
