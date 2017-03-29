@@ -151,6 +151,34 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 		}
 
 		[TestMethod]
+		public void Add_ShouldAddToList_WhenAdding()
+		{
+			string hydrated = @"[
+				{
+					Id: 1,
+					Name: 'n1'	
+				},
+				{
+					Id: 2,
+					Name: 'n2'	
+				},
+				{
+					Id: 3,
+					Name: 'n3'	
+				}
+			]";
+
+			FakeSession fake = new FakeSession();
+			fake.Set(HttpSessionDataAccess.ITEMS_KEY, hydrated);
+			_dataAccess = new HttpSessionDataAccess(fake);
+
+			WorkItem item = _dataAccess.Add(new WorkItem { Name = "n4" });
+
+			Assert.IsTrue(_dataAccess.GetAll().Count == 4);
+			Assert.IsTrue(_dataAccess.GetOne(4).Name == "n4");
+		}
+
+		[TestMethod]
 		public void Add_ShouldUseMaxId_WhenAddingOutOfSync()
 		{
 			string hydrated = @"[
@@ -172,6 +200,33 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 			WorkItem item = _dataAccess.Add(new WorkItem { Name = "n15" });
 
 			Assert.IsTrue(item.Id == 15);
+		}
+		[TestMethod]
+		public void Update_ShouldReplaceItem_WhenCalled()
+		{
+			string hydrated = @"[
+				{
+					Id: 1,
+					Name: 'n1'	
+				},
+				{
+					Id: 2,
+					Name: 'n2'	
+				},
+				{
+					Id: 3,
+					Name: 'n3'	
+				}
+			]";
+
+			FakeSession fake = new FakeSession();
+			fake.Set(HttpSessionDataAccess.ITEMS_KEY, hydrated);
+			_dataAccess = new HttpSessionDataAccess(fake);
+
+			WorkItem item = _dataAccess.Update(new WorkItem { Id = 2, Name = "Hello, I've changed" });
+
+			Assert.IsTrue(_dataAccess.GetAll().Count == 3);
+			Assert.IsTrue(_dataAccess.GetOne(2).Name == "Hello, I've changed");
 		}
 	}
 }

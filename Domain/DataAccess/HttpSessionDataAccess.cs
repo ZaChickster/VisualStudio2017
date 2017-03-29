@@ -36,6 +36,11 @@ namespace VisualStudio2017.Domain.DataAccess
 		{
 			List<WorkItem> items = GetAll();
 
+			return GetOne(id, GetAll());
+		}
+
+		public WorkItem GetOne(int id, List<WorkItem> items)
+		{
 			return items.Find(i => i.Id == id);
 		}
 
@@ -47,8 +52,24 @@ namespace VisualStudio2017.Domain.DataAccess
 			item.Id = newId;
 
 			items.Add(item);
+			_session.Set(ITEMS_KEY, JsonConvert.SerializeObject(items));
 
 			return item;
+		}
+
+		public WorkItem Update(WorkItem changed)
+		{
+			List<WorkItem> items = GetAll();
+			WorkItem item = GetOne(changed.Id, items);
+
+			if (item != null)
+			{
+				items.Remove(item);
+				items.Add(changed);
+				_session.Set(ITEMS_KEY, JsonConvert.SerializeObject(items));
+			}
+
+			return changed;
 		}
 	}
 }
