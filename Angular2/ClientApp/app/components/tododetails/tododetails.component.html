@@ -1,0 +1,34 @@
+<h1>Restaurant Details</h1>
+
+<p>This component demonstrates fetching details data from MongoDB.</p>
+
+<p *ngIf="!model.data"><em>Loading...</em></p>
+
+<p *ngIf="model.data && model.data.name && model.data.cuisine && model.data.borough">
+    Found restaurant {{ model.data.name }} that serves {{ model.data.cuisine }} cuisine in {{ model.data.borough }}.
+</p>
+
+<form *ngIf="model.data">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name" required [(ngModel)]="model.data.name">
+    </div>
+    <div class="form-group">
+        <label for="borough">Borough</label>
+        <input type="text" class="form-control" name="borough" id="borough" required [(ngModel)]="model.data.borough">
+    </div>
+    <div class="form-group">
+        <label for="cuisine">Cuisine</label>
+        <input type="text" class="form-control" name="cuisine" id="cuisine" required [(ngModel)]="model.data.cuisine">
+    </div>
+
+    <button type="button" class="btn btn-success" (click)="doSubmit();">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp; 
+    <button type="button" class="btn" (click)="doDelete();">Delete</button> &nbsp;&nbsp;&nbsp;&nbsp; 
+    <button type="button" class="btn" (click)="goBack();">Cancel</button>
+
+    <div *ngIf="model.message" class="form-group">
+        <br />
+        <label for="message">Message</label>
+        <span>{{ model.message }}</span>
+    </div>
+</form>
