@@ -17,18 +17,11 @@ export class ToDoComponent {
         var me = this;
         me.ajax = http;
 
-        route.params.subscribe(params => {
-            var page = + params['page']; // (+) converts string 'id' to a number
-            me.getPageData(page);
-        });
+        me.getPageData();
     }
 
-    getPageData(page : number) {
-        var url = '/api/Restaurants';
-
-        if (page) {
-            url = url + '?page=' + page;
-        }
+    getPageData() {
+        var url = '/api/ToDos';
 
         this.ajax.get(url).subscribe(result => {
             this.model = result.json() as ToDo[];

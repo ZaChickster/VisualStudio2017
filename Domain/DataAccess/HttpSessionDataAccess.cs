@@ -47,10 +47,14 @@ namespace VisualStudio2017.Domain.DataAccess
 		public WorkItem Add(WorkItem item)
 		{
 			List<WorkItem> items = GetAll();
+			int newId = 1; 
 
-			int newId = items.Max(i => i.Id) + 1;
+			if (items.Count > 0)
+			{
+				newId = items.Max(i => i.Id) + 1;
+			}
+
 			item.Id = newId;
-
 			items.Add(item);
 			_session.Set(ITEMS_KEY, JsonConvert.SerializeObject(items));
 

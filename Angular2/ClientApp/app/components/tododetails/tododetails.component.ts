@@ -21,7 +21,7 @@ export class ToDoDetailsComponent {
         me.model = {} as ToDoDetailModel;
         me._http = http;
         me._route = route;
-        me._url = '/api/Restaurant';
+        me._url = '/api/ToDo';
 
         route.params.subscribe(params => {
             me.updateModel(params['id'])

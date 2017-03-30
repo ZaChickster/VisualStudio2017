@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace VisualStudio2017.Angular2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     public class SampleDataController : Controller
     {
 		private readonly IAppDataAccess _dataAccess;
@@ -24,7 +24,7 @@ namespace VisualStudio2017.Angular2.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        [HttpGet("[action]")]
+        [HttpGet("WeatherForecasts")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
             var rng = new Random();

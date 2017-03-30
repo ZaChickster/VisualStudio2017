@@ -151,6 +151,21 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 		}
 
 		[TestMethod]
+		public void Add_ShouldAddToList_WhenAddingFirst()
+		{
+			string hydrated = @"[]";
+
+			FakeSession fake = new FakeSession();
+			fake.Set(HttpSessionDataAccess.ITEMS_KEY, hydrated);
+			_dataAccess = new HttpSessionDataAccess(fake);
+
+			WorkItem item = _dataAccess.Add(new WorkItem { Name = "n1" });
+
+			Assert.IsTrue(_dataAccess.GetAll().Count == 1);
+			Assert.IsTrue(_dataAccess.GetOne(1).Name == "n1");
+		}
+
+		[TestMethod]
 		public void Add_ShouldAddToList_WhenAdding()
 		{
 			string hydrated = @"[
