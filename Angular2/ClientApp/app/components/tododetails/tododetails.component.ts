@@ -48,7 +48,7 @@ export class ToDoDetailsComponent {
 
         headers.append('Content-Type', 'application/json');
 
-        if (this.model.data.Id) {
+        if (this.model.data.id) {
             method = RequestMethod.Post;
         } else {
             method = RequestMethod.Put;

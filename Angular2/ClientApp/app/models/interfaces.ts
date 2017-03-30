@@ -1,6 +1,6 @@
 export interface ToDo {
-    Id: number;
-    Name: string;
-    Due: Date;
-    Completed: Date;
+    id: number;
+    name: string;
+    due: Date;
+    completed: Date;
 }

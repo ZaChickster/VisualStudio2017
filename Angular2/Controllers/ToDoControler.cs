@@ -32,47 +32,34 @@ namespace VisualStudio2017.Angular2.Controllers
 		}
 
 		[HttpGet("ToDo")]
-		public WorkItemModel GetOne(int? id)
+		public WorkItem GetOne(int? id)
 		{
-			WorkItemModel model = new WorkItemModel();
-
 			if (id != null)
 			{
-				model.Data = _dataAccess.GetOne(id.Value);
+				return _dataAccess.GetOne(id.Value);
 			}
 			else
 			{
-				model.Data = new WorkItem();
+				return new WorkItem();
 			}
-
-			return model;
 		}
 
 		[HttpPost("ToDo")]
-		public WorkItemModel Update([FromBody] WorkItem item)
+		public WorkItem Update([FromBody] WorkItem item)
 		{
-			WorkItemModel model = new WorkItemModel();
-			model.Data = _dataAccess.Update(item);
-			model.Message = "ToDo Updated";
-			return model;
+			return _dataAccess.Update(item);
 		}
 
 		[HttpPut("ToDo")]
-		public WorkItemModel Insert([FromBody] WorkItem item)
+		public WorkItem Insert([FromBody] WorkItem item)
 		{
-			WorkItemModel model = new WorkItemModel();
-			model.Data = _dataAccess.Add(item);
-			model.Message = "ToDo Added";
-			return model;
+			return _dataAccess.Add(item);
 		}
 
 		[HttpDelete("ToDo")]
-		public WorkItemModel Remove([FromBody] WorkItem item)
+		public WorkItem Remove([FromBody] WorkItem item)
 		{
-			WorkItemModel model = new WorkItemModel();
-			model.Data = _dataAccess.Delete(item.Id);
-			model.Message = "ToDo Deleted";
-			return model;
+			return _dataAccess.Delete(item.Id); ;
 		}
 	}
 }

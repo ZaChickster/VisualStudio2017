@@ -1,6 +1,6 @@
-<h1>Restaurants</h1>
+<h1>To Dos</h1>
 
-<p>This component demonstrates fetching data from MongoDB.</p>
+<p>This component demonstrates fetching data from Session.</p>
 
 <p *ngIf="!model"><em>Loading...</em></p>
 
@@ -21,14 +21,14 @@
     </thead>
     <tbody>
         <tr *ngFor="let todo of model">
-            <td>{{ todo.Id }}</td>
+            <td>{{ todo.id }}</td>
             <td>
-                <a [routerLink]="['/todo/details', todo.Id]">
-                    {{ todo.Name }}
+                <a [routerLink]="['/todo/details', todo.id]">
+                    {{ todo.name }}
                 </a>                
             </td>
-            <td>{{ todo.Due }}</td>
-            <td>{{ todo.Complete }}</td>
+            <td>{{ todo.due }}</td>
+            <td>{{ todo.completed}}</td>
         </tr>
     </tbody>
 </table>
