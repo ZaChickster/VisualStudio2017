@@ -5,43 +5,30 @@
 <p *ngIf="!model"><em>Loading...</em></p>
 
 <p *ngIf="model">
-    Showing page {{ model.nextPage }} of {{ model.numberPages }}
-</p>
-
-<p *ngIf="model">
-    <a *ngIf="model.showPreviousPage" [routerLink]="['/mongo', model.previousPage]">
-        <span class='glyphicon glyphicon-arrow-left'></span> Previous
-    </a>
-    <a *ngIf="model.showNextPage" [routerLink]="['/mongo', model.nextPage]">
-        Next <span class='glyphicon glyphicon-arrow-right'></span>
+    <a [routerLink]="['/todo/details']">
+        Add New To-Do
     </a>
 </p>
 
-<p *ngIf="model">
-    <a [routerLink]="['/mongo/details']">
-        Add New Restaurant
-    </a>
-</p>
-
-<table class='table' *ngIf="model && model.pageInstances">
+<table class='table' *ngIf="model">
     <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Borough</th>
-            <th>Cuisine</th>
+            <th>Due</th>
+            <th>Completed</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let restaurant of model.pageInstances">
-            <td>{{ restaurant.restaurant_id }}</td>
+        <tr *ngFor="let todo of model">
+            <td>{{ todo.Id }}</td>
             <td>
-                <a [routerLink]="['/mongo/details', restaurant.restaurant_id]">
-                    {{ restaurant.name }}
+                <a [routerLink]="['/todo/details', todo.Id]">
+                    {{ todo.Name }}
                 </a>                
             </td>
-            <td>{{ restaurant.borough }}</td>
-            <td>{{ restaurant.cuisine }}</td>
+            <td>{{ todo.Due }}</td>
+            <td>{{ todo.Complete }}</td>
         </tr>
     </tbody>
 </table>

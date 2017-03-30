@@ -4,22 +4,22 @@
 
 <p *ngIf="!model.data"><em>Loading...</em></p>
 
-<p *ngIf="model.data && model.data.name && model.data.cuisine && model.data.borough">
-    Found restaurant {{ model.data.name }} that serves {{ model.data.cuisine }} cuisine in {{ model.data.borough }}.
+<p *ngIf="model.data && model.data.Name && model.data.Due && model.data.Completed">
+    Found restaurant {{ model.data.Name }} that serves {{ model.data.Due }} cuisine in {{ model.data.Completed }}.
 </p>
 
 <form *ngIf="model.data">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" id="name" required [(ngModel)]="model.data.name">
+        <input type="text" class="form-control" name="Name" id="Name" required [(ngModel)]="model.data.Name">
     </div>
     <div class="form-group">
-        <label for="borough">Borough</label>
-        <input type="text" class="form-control" name="borough" id="borough" required [(ngModel)]="model.data.borough">
+        <label for="borough">Due</label>
+        <input type="text" class="form-control" name="Due" id="Due" required [(ngModel)]="model.data.Due">
     </div>
     <div class="form-group">
         <label for="cuisine">Cuisine</label>
-        <input type="text" class="form-control" name="cuisine" id="cuisine" required [(ngModel)]="model.data.cuisine">
+        <input type="text" class="form-control" name="Completed" id="Completed" required [(ngModel)]="model.data.Completed">
     </div>
 
     <button type="button" class="btn btn-success" (click)="doSubmit();">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp; 
