@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VisualStudio2017.Domain.DataAccess;
+﻿using VisualStudio2017.Domain.DataAccess;
 
 namespace VisualStudio2017.Domain.Tests.DataAccess
 {

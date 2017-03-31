@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VisualStudio2017.Domain
+﻿namespace VisualStudio2017.Domain
 {
 	public class WeatherForecast
 	{

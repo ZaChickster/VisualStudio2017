@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace VisualStudio2017.Domain.DataAccess

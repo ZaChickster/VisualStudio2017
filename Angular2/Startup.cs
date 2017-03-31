@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -13,7 +10,7 @@ using VisualStudio2017.Domain.DataAccess;
 
 namespace VisualStudio2017.Angular2
 {
-    public class Startup
+	public class Startup
     {
         public Startup(IHostingEnvironment env)
         {

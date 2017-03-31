@@ -1,16 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VisualStudio2017.Domain;
 using VisualStudio2017.Domain.DataAccess;
-using Microsoft.AspNetCore.Http;
-using VisualStudio2017.Angular2.Models;
 
 namespace VisualStudio2017.Angular2.Controllers
 {
-    [Route("api")]
+	[Route("api")]
     public class ToDoController : Controller
     {
 		private readonly IAppDataAccess _dataAccess;
