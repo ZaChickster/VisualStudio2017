@@ -43,7 +43,34 @@ export class ToDoDetailsComponent {
         }        
     }
 
+    simpleValidate() {
+        var error = '';
+
+        if (!this.model.data.name) {
+            error += 'Please give this To-Do a name.';
+        } 
+
+        if(!this.model.data.whenDue) {
+            if (error) {
+                error += '   ';
+            }
+
+            error += 'Please say when this To-Do should be completed by.';
+        } 
+
+        if (error) {
+            this.model.message = error;
+            return false;
+        }
+
+        return true;
+    }
+
     doSubmit() {
+        if (!this.simpleValidate()) {
+            return;
+        }
+
         var headers = new Headers();
         var method = {} as RequestMethod;
 
@@ -61,7 +88,7 @@ export class ToDoDetailsComponent {
             }
         } else {
             this.model.data.whenCompleted = null;
-        }
+        }        
 
         var reqOpts = new RequestOptions({
             method: method,

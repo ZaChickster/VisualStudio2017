@@ -23,7 +23,7 @@
     </div>
 
     <button type="button" class="btn btn-success" (click)="doSubmit();">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp; 
-    <button type="button" class="btn" (click)="doDelete();">Delete</button> &nbsp;&nbsp;&nbsp;&nbsp; 
+    <button *ngIf="model.data.id && model.data.id > 0" type="button" class="btn" (click)="doDelete();">Delete</button> &nbsp;&nbsp;&nbsp;&nbsp; 
     <button type="button" class="btn" (click)="goBack();">Cancel</button>
 
     <div *ngIf="model.message" class="form-group">
