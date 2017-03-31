@@ -1,34 +1,34 @@
-<h1>Restaurant Details</h1>
+<h1>Maintain Individual ToDo</h1>
 
-<p>This component demonstrates fetching details data from MongoDB.</p>
+<p>This component demonstrates fetching ToDo details data from session data storage.</p>
 
 <p *ngIf="!model.data"><em>Loading...</em></p>
 
-<p *ngIf="model.data && model.data.name && model.data.whenDue">
-    Found to-do {{ model.data.name }} that's due {{ model.data.whenDue }} and has completion status of {{ model.data.completed }}.
-</p>
-
 <form *ngIf="model.data">
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" id="name" required [(ngModel)]="model.data.name">
-    </div>
-    <div class="form-group">
-        <label for="Due">Due</label>
-        <input type="datetime-local" class="form-control" name="whenDue" id="whenDue" required [(ngModel)]="model.data.whenDue">
-    </div>
-    <div>
-        <label for="Completed">Completed</label>
-        <input type="checkbox" class="form-control" name="completed" id="completed" value="true" [(ngModel)]="model.data.completed">
-    </div>
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Details</legend>
 
-    <button type="button" class="btn btn-success" (click)="doSubmit();">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp; 
-    <button *ngIf="model.data.id && model.data.id > 0" type="button" class="btn" (click)="doDelete();">Delete</button> &nbsp;&nbsp;&nbsp;&nbsp; 
-    <button type="button" class="btn" (click)="goBack();">Cancel</button>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" required [(ngModel)]="model.data.name">
+        </div>
+        <div class="form-group">
+            <label for="Due">Due</label>
+            <input type="datetime-local" class="form-control" name="whenDue" id="whenDue" required [(ngModel)]="model.data.whenDue">
+        </div>
+        <div>
+            <label for="Completed">Completed</label>
+            <input type="checkbox" class="form-control" name="completed" id="completed" value="true" [(ngModel)]="model.data.completed">
+        </div>
 
-    <div *ngIf="model.message" class="form-group">
-        <br />
-        <label for="message">Message</label>
-        <span>{{ model.message }}</span>
-    </div>
+        <button type="button" class="btn btn-success" (click)="doSubmit();">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button *ngIf="model.data.id && model.data.id > 0" type="button" class="btn" (click)="doDelete();">Delete</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn" (click)="goBack();">Cancel</button>
+
+        <div *ngIf="model.message" class="form-group">
+            <br />
+            <label for="message">Message</label>
+            <span>{{ model.message }}</span>
+        </div>
+    </fieldset>
 </form>

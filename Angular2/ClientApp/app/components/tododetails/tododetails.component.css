@@ -5,3 +5,19 @@
     box-shadow: none;
     margin-bottom: 10px;
 }
+
+fieldset {
+    border: 1px solid black;
+    width: 50%;
+    background: #cccbcb;
+    padding: 20px;
+}
+
+fieldset legend {
+    background: #aaaaaa;
+    padding: 6px;
+    font-weight: bold;
+    width: 50%;
+    border: 1px solid black;
+    margin-bottom: 0px;
+}
