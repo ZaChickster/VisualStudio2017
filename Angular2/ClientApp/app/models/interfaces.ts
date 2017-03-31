@@ -5,3 +5,10 @@ export interface ToDo {
     whenCompleted: Date;
     completed: boolean
 }
+
+export interface WeatherForecast {
+    dateFormatted: string;
+    temperatureC: number;
+    temperatureF: number;
+    summary: string;
+}
