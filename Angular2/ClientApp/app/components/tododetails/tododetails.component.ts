@@ -6,7 +6,8 @@ import { ToDo } from '../../models/interfaces';
 
 @Component({
     selector: 'tododetails',
-    templateUrl: './tododetails.component.html'
+    templateUrl: './tododetails.component.html',
+    styleUrls: ['./tododetails.component.css']
 })
 export class ToDoDetailsComponent {
     model: ToDoDetailModel;
@@ -52,6 +53,14 @@ export class ToDoDetailsComponent {
             method = RequestMethod.Post;
         } else {
             method = RequestMethod.Put;
+        }
+
+        if (this.model.data.completed) {
+            if (!this.model.data.whenCompleted) {
+                this.model.data.whenCompleted = new Date();
+            }
+        } else {
+            this.model.data.whenCompleted = null;
         }
 
         var reqOpts = new RequestOptions({

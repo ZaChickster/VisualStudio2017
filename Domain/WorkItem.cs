@@ -6,7 +6,8 @@ namespace VisualStudio2017.Domain
     {
 		public int Id { get; set; }
 		public string Name { get; set; }
-		public DateTime? Due { get; set; }
-		public DateTime? Completed { get; set; }
+		public DateTime? WhenDue { get; set; }
+		public DateTime? WhenCompleted { get; set; }
+		public bool Completed { get; set; }
 	}
 }

@@ -4,8 +4,8 @@
 
 <p *ngIf="!model.data"><em>Loading...</em></p>
 
-<p *ngIf="model.data && model.data.name && model.data.due && model.data.completed">
-    Found restaurant {{ model.data.name }} that serves {{ model.data.due }} cuisine in {{ model.data.completed }}.
+<p *ngIf="model.data && model.data.name && model.data.whenDue">
+    Found to-do {{ model.data.name }} that's due {{ model.data.whenDue }} and has completion status of {{ model.data.completed }}.
 </p>
 
 <form *ngIf="model.data">
@@ -15,11 +15,11 @@
     </div>
     <div class="form-group">
         <label for="Due">Due</label>
-        <input type="text" class="form-control" name="due" id="due" required [(ngModel)]="model.data.due">
+        <input type="datetime-local" class="form-control" name="whenDue" id="whenDue" required [(ngModel)]="model.data.whenDue">
     </div>
-    <div class="form-group">
+    <div>
         <label for="Completed">Completed</label>
-        <input type="text" class="form-control" name="completed" id="completed" required [(ngModel)]="model.data.completed">
+        <input type="checkbox" class="form-control" name="completed" id="completed" value="true" [(ngModel)]="model.data.completed">
     </div>
 
     <button type="button" class="btn btn-success" (click)="doSubmit();">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp; 

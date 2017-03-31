@@ -17,6 +17,7 @@
             <th>Name</th>
             <th>Due</th>
             <th>Completed</th>
+            <th>When Completed</th>
         </tr>
     </thead>
     <tbody>
@@ -27,8 +28,12 @@
                     {{ todo.name }}
                 </a>                
             </td>
-            <td>{{ todo.due }}</td>
-            <td>{{ todo.completed}}</td>
+            <td>{{ todo.whenDue }}</td>
+            <td>
+                <span *ngIf="todo.completed">Yes</span>
+                <span *ngIf="!todo.completed">No</span>
+            </td>
+            <td>{{ todo.whenCompleted}}</td>
         </tr>
     </tbody>
 </table>
