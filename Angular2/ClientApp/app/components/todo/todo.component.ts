@@ -10,33 +10,29 @@ import { ToDo } from '../../models/interfaces';
 })
 
 export class ToDoComponent {
-    ajax: Http;
+    model: ToDo[];
+    filtered: ToDo[];
 
-    public model: ToDo[];
-    public filtered: ToDo[];
-    public showCompleted = true;
+    _ajax: Http;
+    _showCompleted = true;
 
     constructor(http: Http, route: ActivatedRoute) {
-        var me = this;
-        me.ajax = http;
-
-        me.getPageData();
+        this._ajax = http;
+        this.getPageData();
     }
 
     getPageData() {
         var url = '/api/ToDos';
 
-        this.ajax.get(url).subscribe(result => {
+        this._ajax.get(url).subscribe(result => {
             this.model = result.json() as ToDo[];
             this.toggleCompleted();
         });
-
-        return false;
     }
 
     toggleCompleted() {
         this.filtered = [];
-        this.filtered = this.model.filter(todo => todo.completed === this.showCompleted || todo.completed === false);
-        this.showCompleted = !this.showCompleted;
+        this.filtered = this.model.filter(todo => todo.completed === this._showCompleted || todo.completed === false);
+        this._showCompleted = !this._showCompleted;
     }
 }

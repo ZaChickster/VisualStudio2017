@@ -12,7 +12,7 @@ import { ToDo } from '../../models/interfaces';
 export class ToDoDetailsComponent {
     model: ToDoDetailModel;
 
-    _http: Http;
+    _ajax: Http;
     _route: ActivatedRoute;
     _url: string;
 
@@ -20,7 +20,7 @@ export class ToDoDetailsComponent {
         var me = this;
 
         me.model = {} as ToDoDetailModel;
-        me._http = http;
+        me._ajax = http;
         me._route = route;
         me._url = '/api/ToDo';
 
@@ -35,7 +35,7 @@ export class ToDoDetailsComponent {
         if (id) {
             url = this._url + '?id=' + id;
 
-            this._http.get(url).subscribe(result => {
+            this._ajax.get(url).subscribe(result => {
                 this.model.data = result.json() as ToDo;
             });
         } else {
@@ -97,7 +97,7 @@ export class ToDoDetailsComponent {
             body: JSON.stringify(this.model.data)
         });
 
-        this._http.request(new Request(reqOpts)).subscribe(result => {
+        this._ajax.request(new Request(reqOpts)).subscribe(result => {
             this.model.data = result.json() as ToDo;
             this.model.message = 'Save Successful';
             this.goBack();
@@ -116,7 +116,7 @@ export class ToDoDetailsComponent {
             body: JSON.stringify(this.model.data)
         });
 
-        this._http.request(new Request(reqOpts)).subscribe(result => {
+        this._ajax.request(new Request(reqOpts)).subscribe(result => {
             this.model.message = 'Delete Successful';
             this.goBack();
         });
