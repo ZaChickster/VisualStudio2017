@@ -79,6 +79,36 @@ namespace VisualStudio2017.Domain.Tests.DataAccess
 		}
 
 		[TestMethod]
+		public void GetAll_ShouldReturnOrderedList_ByWhenDue()
+		{
+			string hydrated = @"[
+				{
+					Id: 1,
+					Name: 'n1',
+					WhenDue: '2017-04-01'
+				},
+				{
+					Id: 2,
+					Name: 'n3',
+					WhenDue: '2017-04-03'
+				},
+				{
+					Id: 3,
+					Name: 'n2',
+					WhenDue: '2017-04-02'	
+				}
+			]";
+
+			_session.Setup(s => s.Get(HttpSessionDataAccess.ITEMS_KEY)).Returns(hydrated);
+
+			Assert.IsTrue(_dataAccess.GetAll() != null);
+			Assert.IsTrue(_dataAccess.GetAll().Count == 3);
+			Assert.IsTrue(_dataAccess.GetAll()[0].Name == "n1");
+			Assert.IsTrue(_dataAccess.GetAll()[1].Name == "n2");
+			Assert.IsTrue(_dataAccess.GetAll()[2].Name == "n3");
+		}
+
+		[TestMethod]
 		public void GetOne_ShouldReturnItem_WhenItemExists()
 		{
 			string hydrated = @"[

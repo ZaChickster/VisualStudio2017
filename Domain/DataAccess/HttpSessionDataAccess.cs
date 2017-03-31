@@ -29,7 +29,9 @@ namespace VisualStudio2017.Domain.DataAccess
 				items.AddRange(converted);
 			}
 
-			return items;
+			return items
+				.OrderBy(wi => wi.WhenDue)
+				.ToList();
 		}
 
 		public WorkItem GetOne(int id)
