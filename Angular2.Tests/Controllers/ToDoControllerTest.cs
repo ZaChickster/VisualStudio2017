@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using VisualStudio2017.Angular2.Controllers;
 using VisualStudio2017.Domain;
 using VisualStudio2017.Domain.DataAccess;
