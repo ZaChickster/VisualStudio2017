@@ -5,9 +5,8 @@
 <p *ngIf="!model"><em>Loading...</em></p>
 
 <p *ngIf="model">
-    <a [routerLink]="['/todo/details']">
-        Add New To-Do
-    </a>
+    <button type="button" class="btn btn-success" [routerLink]="['/todo/details']">Add New ToDo</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn" (click)="toggleCompleted();">Toggle Completed</button>
 </p>
 
 <table class='table' *ngIf="model">
@@ -21,19 +20,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let todo of model">
-            <td>{{ todo.id }}</td>
-            <td>
+        <tr *ngFor="let todo of filtered" [attr.class]="!todo.completed ? 'still-open': null">
+            <td width="10%">{{ todo.id }}</td>
+            <td width="20%">
                 <a [routerLink]="['/todo/details', todo.id]">
                     {{ todo.name }}
                 </a>                
             </td>
-            <td>{{ todo.whenDue }}</td>
-            <td>
+            <td width="30%">{{ todo.whenDue }}</td>
+            <td width="10%">
                 <span *ngIf="todo.completed">Yes</span>
                 <span *ngIf="!todo.completed">No</span>
             </td>
-            <td>{{ todo.whenCompleted}}</td>
+            <td width="30%">{{ todo.whenCompleted}}</td>
         </tr>
     </tbody>
 </table>

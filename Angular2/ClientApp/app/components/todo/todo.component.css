@@ -1,0 +1,7 @@
+table {
+    border: 1px solid black;
+}
+
+table tr.still-open {
+    background-color: #f8f677
+}
