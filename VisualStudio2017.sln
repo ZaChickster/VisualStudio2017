@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular2", "Angular2\Angular2.csproj", "{92F84F8C-2DBE-453E-B49C-6F7023DF4791}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "Domain.Tests\Domain.Tests.csproj", "{9E32EB94-DA42-4FA8-8356-04FA6D426AFA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{5675A8E7-C1B5-4EA5-B32D-819EC39BC129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueJs", "VueJs\VueJs.csproj", "{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5675A8E7-C1B5-4EA5-B32D-819EC39BC129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5675A8E7-C1B5-4EA5-B32D-819EC39BC129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5675A8E7-C1B5-4EA5-B32D-819EC39BC129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
