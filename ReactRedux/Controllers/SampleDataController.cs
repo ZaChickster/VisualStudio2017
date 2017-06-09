@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplicationBasic.Controllers
+namespace VisualStudio2017.ReactRedux.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
@@ -17,7 +16,7 @@ namespace WebApplicationBasic.Controllers
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts(int startDateIndex)
         {
-            var rng = new Random();
+            Random rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 DateFormatted = DateTime.Now.AddDays(index + startDateIndex).ToString("d"),

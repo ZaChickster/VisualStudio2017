@@ -25,7 +25,7 @@ namespace VisualStudio2017.Angular2.Controllers
         [HttpGet("WeatherForecasts")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
-            var rng = new Random();
+            Random rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 DateFormatted = DateTime.Now.AddDays(index).ToString("d"),

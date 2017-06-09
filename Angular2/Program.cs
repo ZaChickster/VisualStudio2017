@@ -7,7 +7,7 @@ namespace VisualStudio2017.Angular2
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
+            IWebHost host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
