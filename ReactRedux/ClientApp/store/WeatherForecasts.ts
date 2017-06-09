@@ -23,14 +23,14 @@ export interface WeatherForecast {
 // They do not themselves have any side-effects; they just describe something that is going to happen.
 
 interface RequestWeatherForecastsAction {
-    type: 'REQUEST_WEATHER_FORECASTS',
+    type: 'REQUEST_WEATHER_FORECASTS';
     startDateIndex: number;
 }
 
 interface ReceiveWeatherForecastsAction {
-    type: 'RECEIVE_WEATHER_FORECASTS',
+    type: 'RECEIVE_WEATHER_FORECASTS';
     startDateIndex: number;
-    forecasts: WeatherForecast[]
+    forecasts: WeatherForecast[];
 }
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
