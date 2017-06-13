@@ -9,30 +9,28 @@ namespace VisualStudio2017.Backend.Data
 {
     public class MongoDBContext : IAppDataContext
 	{
-		private IMongoClient _client;
-		private IMongoDatabase _database;
-		private IMongoCollection<Restaurant> _collection;
-		private FilterDefinition<Restaurant> _filter;
+		private readonly IMongoCollection<Restaurant> _collection;
+		private readonly FilterDefinition<Restaurant> _filter;
 
 		public MongoDBContext()
 		{
-			_client = new MongoClient();
-			_database = _client.GetDatabase("test");
-			_collection = _database.GetCollection<Restaurant>("restaurants");
+			IMongoClient client = new MongoClient();
+			IMongoDatabase database = client.GetDatabase("test");
+			_collection = database.GetCollection<Restaurant>("restaurants");
 			_filter = Builders<Restaurant>.Filter.Ne("name", BsonString.Empty);
 		}
 
 		public async Task<int> GetCount()
 		{
-			var count = await _collection.CountAsync(_filter);
+			long count = await _collection.CountAsync(_filter);
 
 			return (int)count;
 		}
 
 		public async Task<List<Restaurant>> GetRestaurants(int pageSize, int pageNumber)
 		{
-			var results = new List<Restaurant>();
-			var options = new FindOptions<Restaurant>()
+			List<Restaurant> results = new List<Restaurant>();
+			FindOptions<Restaurant> options = new FindOptions<Restaurant>()
 			{
 				Sort = Builders<Restaurant>.Sort.Ascending("name"),
 				Skip = pageNumber * pageSize,
@@ -44,7 +42,7 @@ namespace VisualStudio2017.Backend.Data
 					.Include(r => r.cuisine)
 			};
 
-			var found = await _collection.FindAsync(_filter, options);
+			IAsyncCursor<Restaurant> found = await _collection.FindAsync(_filter, options);
 			results.AddRange(found.ToList());
 
 			return results;
@@ -69,10 +67,9 @@ namespace VisualStudio2017.Backend.Data
 				.Set(s => s.name, data.name)
 				.Set(s => s.cuisine, data.cuisine)
 				.Set(s => s.borough, data.borough);
-			ModificationResult result;
 
 			UpdateResult operation = await _collection.UpdateOneAsync(filter, update);
-			result = new ModificationResult { ModifiedCount = operation.ModifiedCount, MatchedCount = operation.MatchedCount, InstanceId = data.restaurant_id };
+			ModificationResult result = new ModificationResult { ModifiedCount = operation.ModifiedCount, MatchedCount = operation.MatchedCount, InstanceId = data.restaurant_id };
 
 			return result;
 		}

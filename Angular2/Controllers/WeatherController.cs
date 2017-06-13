@@ -17,7 +17,7 @@ namespace VisualStudio2017.Angular2.Controllers
 			_dataAccess = da;
 		}
 
-		private static string[] Summaries = new[]
+		private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
