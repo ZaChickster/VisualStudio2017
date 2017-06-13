@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.4.3" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.1" />
   </ItemGroup>
 
 </Project>

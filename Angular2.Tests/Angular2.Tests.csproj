@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Angular2\Angular2.csproj" />
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Backend\Backend.csproj" />
   </ItemGroup>
 
   <ItemGroup>
