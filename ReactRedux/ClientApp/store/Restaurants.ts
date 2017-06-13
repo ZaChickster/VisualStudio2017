@@ -47,7 +47,6 @@ export interface Restaurant {
 interface RequestRestaurantsAction {
     type: 'REQUEST_RESTAURANTS';
     currentPage: number;
-    pageSize: number;
 }
 
 interface ReceiveRestaurantsAction {
@@ -72,10 +71,10 @@ type KnownAction = RequestRestaurantsAction | ReceiveRestaurantsAction;
 // They don't directly mutate state, but they can have external side-effects (such as loading data).
 
 export const actionCreators = {
-    requestRestaurants: (currentPage: number, pageSize: number): AppThunkAction<KnownAction> => (dispatch, getState) => {
+    requestRestaurants: (currentPage: number): AppThunkAction<KnownAction> => (dispatch, getState) => {
         // Only load data if it's something we don't already have (and are not already loading)
         if (currentPage !== getState().restaurants.currentPage) {
-            let fetchTask = fetch(`/api/Restaurants/page=${currentPage}`)
+            let fetchTask = fetch(`/api/Restaurants?page=${currentPage}`)
                 .then(response => response.json() as Promise<RestaurantState>)
                 .then(data => {
                     dispatch({
@@ -95,8 +94,7 @@ export const actionCreators = {
             addTask(fetchTask); // Ensure server-side prerendering waits for this to complete
             dispatch({
                 type: 'REQUEST_RESTAURANTS',
-                currentPage: currentPage,
-                pageSize: pageSize
+                currentPage: currentPage
             });
         }
     }
@@ -106,14 +104,14 @@ export const actionCreators = {
 // REDUCER - For a given state and action, returns the new state. To support time travel, this must not mutate the old state.
 const unloadedState: RestaurantState = {
     isLoading: false,
-    totalRestaurants: 0,
+    totalRestaurants: null,
     pageInstances: [],
-    currentPage: 0,
+    currentPage: null,
     pageSize: 15,
-    numberPages: 0,
-    previousPage: 0,
+    numberPages: null,
+    previousPage: null,
     showPreviousPage: false,
-    nextPage: 0,
+    nextPage: null,
     showNextPage: true
 };
 
@@ -125,7 +123,7 @@ export const reducer: Reducer<RestaurantState> = (state: RestaurantState, action
                 totalRestaurants: state.totalRestaurants,
                 pageInstances: state.pageInstances,
                 currentPage: action.currentPage,
-                pageSize: action.pageSize,
+                pageSize: state.pageSize,
                 numberPages: state.numberPages,
                 previousPage: state.previousPage,
                 showPreviousPage: state.showPreviousPage,
