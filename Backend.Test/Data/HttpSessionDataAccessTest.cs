@@ -1,8 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using VisualStudio2017.Domain.DataAccess;
+using VisualStudio2017.Backend.Data;
+using VisualStudio2017.Backend.Domain;
 
-namespace VisualStudio2017.Domain.Tests.DataAccess
+namespace VisualStudio2017.Backend.Test.Data
 {
 	[TestClass]
 	public class HttpSessionDataAccessTest

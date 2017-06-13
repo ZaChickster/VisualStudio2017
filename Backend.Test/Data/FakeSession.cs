@@ -1,6 +1,6 @@
-﻿using VisualStudio2017.Domain.DataAccess;
+﻿using VisualStudio2017.Backend.Data;
 
-namespace VisualStudio2017.Domain.Tests.DataAccess
+namespace VisualStudio2017.Backend.Test.Data
 {
 	public class FakeSession : ISessionWrapper
 	{

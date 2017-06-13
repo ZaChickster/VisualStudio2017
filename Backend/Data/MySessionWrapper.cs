@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace VisualStudio2017.Domain.DataAccess
+namespace VisualStudio2017.Backend.Data
 {
 	public class MySessionWrapper : ISessionWrapper
     {

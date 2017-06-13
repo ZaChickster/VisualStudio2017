@@ -1,4 +1,4 @@
-﻿using VisualStudio2017.Domain;
+﻿using VisualStudio2017.Backend.Domain;
 
 namespace VisualStudio2017.Angular2.Models
 {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using VisualStudio2017.Domain;
-using VisualStudio2017.Domain.DataAccess;
+using VisualStudio2017.Backend.Data;
+using VisualStudio2017.Backend.Domain;
 
 namespace VisualStudio2017.Angular2.Controllers
 {

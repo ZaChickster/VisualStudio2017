@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VisualStudio2017.Domain
+namespace VisualStudio2017.Backend.Domain
 {
     public class WorkItem
     {

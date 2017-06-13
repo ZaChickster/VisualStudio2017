@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 
-namespace VisualStudio2017.Backend
+namespace VisualStudio2017.Backend.Domain
 {
 	public class Restaurant
 	{

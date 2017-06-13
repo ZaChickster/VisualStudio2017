@@ -1,4 +1,4 @@
-﻿namespace VisualStudio2017.Backend
+﻿namespace VisualStudio2017.Backend.Domain
 {
 	public class WeatherForecast
 	{

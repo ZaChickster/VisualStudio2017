@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using VisualStudio2017.Backend.Domain;
 
 namespace VisualStudio2017.Backend.Data
 {

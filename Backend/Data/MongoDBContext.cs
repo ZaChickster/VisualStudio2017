@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using VisualStudio2017.Backend.Domain;
 
 namespace VisualStudio2017.Backend.Data
 {

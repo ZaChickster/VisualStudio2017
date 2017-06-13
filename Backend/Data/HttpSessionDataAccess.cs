@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using VisualStudio2017.Backend.Domain;
 
-namespace VisualStudio2017.Domain.DataAccess
+namespace VisualStudio2017.Backend.Data
 {
 	public class HttpSessionDataAccess : IAppDataAccess
 	{

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using VisualStudio2017.Backend.Domain;
 
-namespace VisualStudio2017.Domain.DataAccess
+namespace VisualStudio2017.Backend.Data
 {
 	public interface IAppDataAccess
 	{
