@@ -30,7 +30,8 @@ namespace VisualStudio2017.Angular2
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddScoped<ISessionWrapper, MySessionWrapper>();
 			services.AddScoped<IAppDataAccess, HttpSessionDataAccess>();
-
+	        services.AddScoped<IAppDataContext, MongoDBContext>();
+			
 			// Add framework services.
 			services.AddMvc();
 			services.AddMemoryCache();

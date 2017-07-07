@@ -9,6 +9,8 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ToDoComponent } from './components/todo/todo.component';
 import { ToDoDetailsComponent } from './components/tododetails/tododetails.component';
+import { MongoComponent } from './components/mongo/mongo.component';
+import { MongoDetailsComponent } from './components/mongodetails/mongodetails.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -19,6 +21,8 @@ import { ToDoDetailsComponent } from './components/tododetails/tododetails.compo
         FetchDataComponent,
         ToDoComponent,
         ToDoDetailsComponent,
+        MongoComponent,
+        MongoDetailsComponent,
         HomeComponent
     ],
     imports: [
@@ -31,6 +35,10 @@ import { ToDoDetailsComponent } from './components/tododetails/tododetails.compo
             { path: 'todo/details', component: ToDoDetailsComponent },
             { path: 'todo', component: ToDoComponent },
             { path: 'todo/details/:id', component: ToDoDetailsComponent },
+            { path: 'mongo/details', component: MongoDetailsComponent },
+            { path: 'mongo', component: MongoComponent },
+            { path: 'mongo/:page', component: MongoComponent },
+            { path: 'mongo/details/:id', component: MongoDetailsComponent },
             { path: '**', redirectTo: 'home' }
         ]),
         FormsModule

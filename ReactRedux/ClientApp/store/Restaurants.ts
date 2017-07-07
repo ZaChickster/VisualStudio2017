@@ -104,7 +104,7 @@ export const actionCreators = {
         }
     },
     getRestaurantDetails: (id: string): AppThunkAction<KnownDetailActions> => (dispatch, getState) => {
-        const fetchTask = fetch(`/api/Restaurants?page=${id}`)
+        const fetchTask = fetch(`/api/Restaurant?id=${id}`)
             .then(response => response.json() as Promise<Restaurant>)
             .then(data => {
                 dispatch({

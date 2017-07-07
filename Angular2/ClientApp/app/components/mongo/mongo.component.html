@@ -1,0 +1,47 @@
+<h1>Restaurants</h1>
+
+<p>This component demonstrates fetching data from MongoDB.</p>
+
+<p *ngIf="!model"><em>Loading...</em></p>
+
+<p *ngIf="model">
+    Showing page {{ model.nextPage }} of {{ model.numberPages }}
+</p>
+
+<p *ngIf="model">
+    <a *ngIf="model.showPreviousPage" [routerLink]="['/mongo', model.previousPage]">
+        <span class='glyphicon glyphicon-arrow-left'></span> Previous
+    </a>
+    <a *ngIf="model.showNextPage" [routerLink]="['/mongo', model.nextPage]">
+        Next <span class='glyphicon glyphicon-arrow-right'></span>
+    </a>
+</p>
+
+<p *ngIf="model">
+    <a [routerLink]="['/mongo/details']">
+        Add New Restaurant
+    </a>
+</p>
+
+<table class='table' *ngIf="model && model.pageInstances">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Borough</th>
+            <th>Cuisine</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let restaurant of model.pageInstances">
+            <td>{{ restaurant.restaurant_id }}</td>
+            <td>
+                <a [routerLink]="['/mongo/details', restaurant.restaurant_id]">
+                    {{ restaurant.name }}
+                </a>                
+            </td>
+            <td>{{ restaurant.borough }}</td>
+            <td>{{ restaurant.cuisine }}</td>
+        </tr>
+    </tbody>
+</table>

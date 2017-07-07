@@ -45,7 +45,7 @@ class Restaurants extends React.Component<RestaurantsProps, {}> {
             {this.props.pageInstances.map(restaurant =>
                 <tr key={restaurant.restaurant_id}>
                     <td>
-                        <Link className='pull-left' to={`/mongodb/restaurant/${restaurant.restaurant_id}`}>{restaurant.name}</Link>
+                        <Link className='pull-left' to={`/mongodb/details/${restaurant.restaurant_id}`}>{restaurant.name}</Link>
                     </td>
                     <td>{restaurant.borough}</td>
                     <td>{restaurant.cuisine}</td>

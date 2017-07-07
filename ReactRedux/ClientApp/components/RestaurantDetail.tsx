@@ -31,12 +31,14 @@ class RestaurantDetail extends React.Component<RestaurantDetailProps, {}> {
 
     private renderForm() {
         return <form>
-            <fieldset className="scheduler-border">
-                <legend className="scheduler-border">Details</legend>
+            <fieldset className='scheduler-border'>
+                <legend className='scheduler-border'>Details</legend>
 
-                <div className="form-group">
-                    <label>Name</label>
-                    <input type="text" className="form-control" name="name" id="name" required value="{this.props.name}"/>
+                <div className='form-group'>
+                    <label>
+                        Name
+                        <input type='text' className='form-control' name='name' id='name' value='{this.props.name}' />
+                    </label>
                 </div>
             </fieldset>
         </form>;
