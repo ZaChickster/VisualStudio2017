@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ApplicationState }  from '../store';
-import * as RestaurantState from '../store/Restaurants';
+import * as RestaurantStore from '../store/Restaurants';
 
 // At runtime, Redux will merge together...
 type RestaurantsProps =
-    RestaurantState.RestaurantState        // ... state we've requested from the Redux store
-    & typeof RestaurantState.actionCreators      // ... plus action creators we've requested
+    RestaurantStore.RestaurantState        // ... state we've requested from the Redux store
+    & typeof RestaurantStore.actionCreators      // ... plus action creators we've requested
     & RouteComponentProps<{ currentPage: string }>; // ... plus incoming routing parameters   
 
 class Restaurants extends React.Component<RestaurantsProps, {}> {
@@ -25,7 +25,7 @@ class Restaurants extends React.Component<RestaurantsProps, {}> {
 
     public render() {
         return <div>
-            <h1>Weather forecast</h1>
+            <h1>MongoDB Restaurants</h1>
             <p>This component demonstrates fetching data from the server and working with URL parameters.</p>
             {this.renderPagination()}
             {this.renderRestaurants()}
@@ -44,7 +44,9 @@ class Restaurants extends React.Component<RestaurantsProps, {}> {
             <tbody>
             {this.props.pageInstances.map(restaurant =>
                 <tr key={restaurant.restaurant_id}>
-                    <td>{restaurant.name}</td>
+                    <td>
+                        <Link className='pull-left' to={`/mongodb/restaurant/${restaurant.restaurant_id}`}>{restaurant.name}</Link>
+                    </td>
                     <td>{restaurant.borough}</td>
                     <td>{restaurant.cuisine}</td>
                 </tr>
@@ -67,5 +69,5 @@ class Restaurants extends React.Component<RestaurantsProps, {}> {
 
 export default connect(
     (state: ApplicationState) => state.restaurants, // Selects which state properties are merged into the component's props
-    RestaurantState.actionCreators                 // Selects which action creators are merged into the component's props
+    RestaurantStore.actionCreators                 // Selects which action creators are merged into the component's props
 )(Restaurants) as typeof Restaurants;

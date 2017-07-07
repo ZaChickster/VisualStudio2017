@@ -4,7 +4,6 @@ import { AppThunkAction } from './';
 
 // -----------------
 // STATE - This defines the type of data maintained in the Redux store.
-
 export interface RestaurantState {
     isLoading: boolean;
     totalRestaurants: number;
@@ -62,19 +61,25 @@ interface ReceiveRestaurantsAction {
     showNextPage: boolean;
 }
 
+interface RestaurantDetailsAction {
+    type: 'RESTAURANT_DETAILS';
+    instance: Restaurant;
+}
+
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = RequestRestaurantsAction | ReceiveRestaurantsAction;
+type KnownListActions = RequestRestaurantsAction | ReceiveRestaurantsAction;
+type KnownDetailActions = RestaurantDetailsAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
 // They don't directly mutate state, but they can have external side-effects (such as loading data).
 
 export const actionCreators = {
-    requestRestaurants: (currentPage: number): AppThunkAction<KnownAction> => (dispatch, getState) => {
+    requestRestaurants: (currentPage: number): AppThunkAction<KnownListActions> => (dispatch, getState) => {
         // Only load data if it's something we don't already have (and are not already loading)
         if (currentPage !== getState().restaurants.currentPage) {
-            let fetchTask = fetch(`/api/Restaurants?page=${currentPage}`)
+            const fetchTask = fetch(`/api/Restaurants?page=${currentPage}`)
                 .then(response => response.json() as Promise<RestaurantState>)
                 .then(data => {
                     dispatch({
@@ -97,6 +102,17 @@ export const actionCreators = {
                 currentPage: currentPage
             });
         }
+    },
+    getRestaurantDetails: (id: string): AppThunkAction<KnownDetailActions> => (dispatch, getState) => {
+        const fetchTask = fetch(`/api/Restaurants?page=${id}`)
+            .then(response => response.json() as Promise<Restaurant>)
+            .then(data => {
+                dispatch({
+                    type: 'RESTAURANT_DETAILS',
+                    instance: data
+                });
+            });
+        addTask(fetchTask);
     }
 };
 
@@ -115,7 +131,7 @@ const unloadedState: RestaurantState = {
     showNextPage: true
 };
 
-export const reducer: Reducer<RestaurantState> = (state: RestaurantState, action: KnownAction) => {
+export const listReducer: Reducer<RestaurantState> = (state: RestaurantState, action: KnownListActions) => {
     switch (action.type) {
         case 'REQUEST_RESTAURANTS':
             return {
@@ -154,4 +170,8 @@ export const reducer: Reducer<RestaurantState> = (state: RestaurantState, action
     }
 
     return state || unloadedState;
+};
+
+export const detailsReducer: Reducer<Restaurant> = (state: Restaurant, action: KnownDetailActions) => {
+    return state || {} as Restaurant;
 };
