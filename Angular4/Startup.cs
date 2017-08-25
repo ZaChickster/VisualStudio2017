@@ -33,8 +33,8 @@ namespace VisualStudio2017.Angular4
 	        {
 		        // Set a short timeout for easy testing.
 		        options.IdleTimeout = TimeSpan.FromMinutes(30);
-		        options.CookieHttpOnly = false;
-		        options.CookieName = "_some_stupid_name_";
+		        options.Cookie.Name = "_some_stupid_name_";
+		        options.Cookie.HttpOnly = false;
 	        });
 		}
 
