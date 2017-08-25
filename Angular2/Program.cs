@@ -1,20 +1,18 @@
-using System.IO;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace VisualStudio2017.Angular2
+namespace VisualStudio2017.Angular4
 {
-	public class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
-            IWebHost host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+            BuildWebHost(args).Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
-
-            host.Run();
-        }
     }
 }

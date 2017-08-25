@@ -2,7 +2,10 @@
 
   <PropertyGroup>    
     <TargetFramework>netcoreapp2.0</TargetFramework>    
-    <RootNamespace>VisualStudio2017.Angular2.Tests</RootNamespace>
+    <RootNamespace>VisualStudio2017.Angular4.Tests</RootNamespace>    
+    <ApplicationIcon />    
+    <OutputType>Library</OutputType>    
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Angular2\Angular2.csproj" />
+    <ProjectReference Include="..\Angular2\Angular4.csproj" />
     <ProjectReference Include="..\Backend\Backend.csproj" />
   </ItemGroup>
 

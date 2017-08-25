@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using VisualStudio2017.Angular2.Models;
+using VisualStudio2017.Angular4.Models;
 using VisualStudio2017.Backend.Data;
 using VisualStudio2017.Backend.Domain;
 
-namespace Playground.AngularMongoSandbox.Controllers
+namespace VisualStudio2017.Angular4.Controllers
 {
 	[Route("api")]
 	public class RestaurantsController : Controller

@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular2", "Angular2\Angular2.csproj", "{92F84F8C-2DBE-453E-B49C-6F7023DF4791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular4", "Angular2\Angular4.csproj", "{92F84F8C-2DBE-453E-B49C-6F7023DF4791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular2.Tests", "Angular2.Tests\Angular2.Tests.csproj", "{F9AA1D9A-85E8-4BBA-B440-50981A1E9505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular4.Tests", "Angular4.Tests\Angular4.Tests.csproj", "{F9AA1D9A-85E8-4BBA-B440-50981A1E9505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueJs", "VueJs\VueJs.csproj", "{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueJs", "VueJs\VueJs.csproj", "{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactRedux", "ReactRedux\ReactRedux.csproj", "{F3D23A39-AF2F-415C-B508-2FE405371BD9}"
 EndProject
@@ -48,5 +48,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD682F97-C5AD-49E1-8169-22EE66CEC959}
 	EndGlobalSection
 EndGlobal

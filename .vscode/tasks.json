@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/Angular2/Angular2.csproj"
+                "${workspaceRoot}/Angular4/Angular4.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

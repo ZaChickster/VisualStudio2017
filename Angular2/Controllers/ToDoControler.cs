@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using VisualStudio2017.Backend.Data;
 using VisualStudio2017.Backend.Domain;
 
-namespace VisualStudio2017.Angular2.Controllers
+namespace VisualStudio2017.Angular4.Controllers
 {
 	[Route("api")]
     public class ToDoController : Controller

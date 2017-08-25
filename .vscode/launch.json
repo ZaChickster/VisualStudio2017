@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceRoot}/Angular2/bin/Debug/netcoreapp1.1/Angular2.dll",
+            "program": "${workspaceRoot}/Angular4/bin/Debug/netcoreapp2.0/Angular4.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/Angular2",
+            "cwd": "${workspaceRoot}/Angular4",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {

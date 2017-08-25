@@ -1,59 +1,51 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http;
 using VisualStudio2017.Backend.Data;
 
-namespace VisualStudio2017.Angular2
+namespace VisualStudio2017.Angular4
 {
-	public class Startup
+    public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-			services.AddScoped<ISessionWrapper, MySessionWrapper>();
-			services.AddScoped<IAppDataAccess, HttpSessionDataAccess>();
+	        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+	        services.AddScoped<ISessionWrapper, MySessionWrapper>();
+	        services.AddScoped<IAppDataAccess, HttpSessionDataAccess>();
 	        services.AddScoped<IAppDataContext, MongoDBContext>();
-			
-			// Add framework services.
-			services.AddMvc();
-			services.AddMemoryCache();
-			services.AddSession(options =>
-			{
-				// Set a short timeout for easy testing.
-				options.IdleTimeout = TimeSpan.FromMinutes(30);
-				options.CookieHttpOnly = false;
-				options.CookieName = "_some_stupid_name_";
-			});
+
+	        // Add framework services.
+	        services.AddMvc();
+	        services.AddMemoryCache();
+	        services.AddSession(options =>
+	        {
+		        // Set a short timeout for easy testing.
+		        options.IdleTimeout = TimeSpan.FromMinutes(30);
+		        options.CookieHttpOnly = false;
+		        options.CookieName = "_some_stupid_name_";
+	        });
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
                     HotModuleReplacement = true
                 });
             }
@@ -63,7 +55,7 @@ namespace VisualStudio2017.Angular2
             }
 
             app.UseStaticFiles();
-			app.UseSession();
+	        app.UseSession();
 			app.UseMvc(routes =>
             {
                 routes.MapRoute(

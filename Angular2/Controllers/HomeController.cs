@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace VisualStudio2017.Angular2.Controllers
+namespace VisualStudio2017.Angular4.Controllers
 {
 	public class HomeController : Controller
     {

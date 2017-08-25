@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using VisualStudio2017.Angular2.Controllers;
+using VisualStudio2017.Angular4.Controllers;
 using VisualStudio2017.Backend.Data;
 using VisualStudio2017.Backend.Domain;
 
-namespace VisualStudio2017.Angular2.Tests.Controllers
+namespace VisualStudio2017.Angular4.Tests.Controllers
 {
 	[TestClass]
 	public class ToDoControllerTest

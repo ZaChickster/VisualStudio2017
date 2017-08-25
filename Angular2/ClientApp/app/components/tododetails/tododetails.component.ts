@@ -87,7 +87,7 @@ export class ToDoDetailsComponent {
                 this.model.data.whenCompleted = new Date();
             }
         } else {
-            this.model.data.whenCompleted = null;
+            this.model.data.whenCompleted = undefined;
         }        
 
         var reqOpts = new RequestOptions({
