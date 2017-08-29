@@ -14,7 +14,7 @@ export class ProductsApiClient extends HttpService {
   /**
    * Retrieves all products
    */
-  @GET("/product")
+  @GET("/Restaurants")
   @Adapter(ProductsService.gridAdapter)
   public getProducts(): Observable<any> { return null; };
 
@@ -23,7 +23,7 @@ export class ProductsApiClient extends HttpService {
    * 
    * @param id
    */
-  @GET("/product/{id}")
+  @GET("/Restaurant?id={restaurant_id}")
   @Adapter(ProductsService.productDetailsAdapter)
-  public getProductDetails(@Path("id") id: number): Observable<any> { return null; };
+  public getProductDetails(@Path("restaurant_id") restaurant_id: number): Observable<any> { return null; };
 }

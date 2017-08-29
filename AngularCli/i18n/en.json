@@ -45,22 +45,21 @@
   }
 ,
   "Products": {
-    "Title": "Products"
+    "Title": "Resturants"
   },
   "ProductDetails": {
-    "Title": "Product details",
+    "Title": "Resturant details",
     "Name": "Name",
-    "SerialNumber": "Serial Number",
-    "Category": "Category",
-    "Description": "Description",
-    "WarrantyExpiration": "Warranty Expiration",
-    "Price": "Price",
-    "Currency": "Currency"
+    "Id": "Id",
+    "Borough": "Borough",
+    "Cuisine": "Cuisine",
+    "Grades": "Grades",
+    "Address": "Address"
   }
 ,
   "Sidebar": {
     "Menu": "Menu",
-    "ProductsItem": "Products"
+    "ProductsItem": "Resturants"
   },
 
   "ProfileActionBar": {

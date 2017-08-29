@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://apa.netmedia.hr",
+    "target": "http://localhost:62806",
     "secure": false,
     "changeOrigin": true
   }

@@ -3,7 +3,7 @@ import {
   Inject,
   forwardRef
 }                           from '@angular/core';
-import { Product }          from '../shared/models';
+import { Restaurant }          from '../shared/models';
 import { ProductsSandbox }  from './products.sandbox';
 
 @Injectable()
@@ -16,8 +16,8 @@ export class ProductsService {
    *
    * @param products
    */
-  static gridAdapter(products: any): Array<Product> {
-    return products.map(product => new Product(product));
+  static gridAdapter(products: any): Array<Restaurant> {
+    return products.map(product => new Restaurant(product));
   }
 
   /**
@@ -25,7 +25,7 @@ export class ProductsService {
    *
    * @param product
    */
-  static productDetailsAdapter(product: any): Product {
-    return new Product(product);
+  static productDetailsAdapter(product: any): Restaurant {
+    return new Restaurant(product);
   }
 }

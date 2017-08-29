@@ -1,15 +1,14 @@
 {
   "Products": {
-    "Title": "Proizvodi"
+    "Title": "fdsaasdf"
   },
   "ProductDetails": {
-    "Title": "Detalji proizvoda",
-    "Name": "Naziv",
-    "SerialNumber": "Serijski Broj",
-    "Category": "Kategorija",
-    "Description": "Opis",
-    "WarrantyExpiration": "Istek Garancije",
-    "Price": "Cijena",
-    "Currency": "Valuta"
+    "Title": "fdsaasdf details",
+    "Name": "sdfgsdfg",
+    "Id": "Isdfgd",
+    "Borough": "Borgdfhough",
+    "Cuisine": "rtrty",
+    "Grades": "Gradfghddes",
+    "Address": "dfgg"
   }
 }

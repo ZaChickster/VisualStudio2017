@@ -5,28 +5,33 @@
 
       <div class="productDetails-contentWrapper">
         <div class="columns">
-          <h5>{{ 'ProductDetails.SerialNumber' | translate }}</h5>
-          <p>{{ product?.serialNumber }}</p>
+          <h5>{{ 'ProductDetails.Id' | translate }}</h5>
+          <p>{{ product?.restaurant_id }}</p>
         </div>
 
         <div class="columns">
-          <h5>{{ 'ProductDetails.Category' | translate }}</h5>
-          <p>{{ product?.category }}</p>
+          <h5>{{ 'ProductDetails.Borough' | translate }}</h5>
+          <p>{{ product?.borough }}</p>
         </div>
 
         <div class="columns">
-          <h5>{{ 'ProductDetails.Description' | translate }}</h5>
-          <p>{{ product?.description }}</p>
+          <h5>{{ 'ProductDetails.Cuisine' | translate }}</h5>
+          <p>{{ product?.cuisine }}</p>
         </div>
 
         <div class="columns">
-          <h5>{{ 'ProductDetails.WarrantyExpiration' | translate }}</h5>
-          <p>{{ productsSandbox.formatDate(product?.warrantyExpiration) }}</p>
+          <h5>{{ 'ProductDetails.Grades' | translate }}</h5>
+          <p>{{ product?.grades }}</p>
+        </div>
+        
+        <div class="columns">
+          <h5>{{ 'ProductDetails.Address' | translate }}</h5>
+          <p>{{ product?.address }}</p>
         </div>
 
         <div class="columns">
-          <h5>{{ 'ProductDetails.Price' | translate }}</h5>
-          <p>{{ product?.price }} {{ product?.currency }}</p>
+          <h5>{{ 'ProductDetails.Name' | translate }}</h5>
+          <p>{{ product?.name }}</p>
         </div>
       </div>
 
