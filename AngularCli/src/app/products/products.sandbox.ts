@@ -7,7 +7,8 @@ import * as store     	          from '../shared/store';
 import * as productsActions       from '../shared/store/actions/products.action';
 import * as productDetailsActions from '../shared/store/actions/product-details.action';
 import {
-  Product,
+  Restaurant,
+  RestaurantModel,
   User
 }                                 from '../shared/models';
 
@@ -33,8 +34,15 @@ export class ProductsSandbox extends Sandbox {
   /**
    * Loads products from the server
    */
-  public loadProducts(): void {
-    this.appState$.dispatch(new productsActions.LoadAction())
+  public loadProducts(page: number): void {
+    this.appState$.dispatch(new productsActions.LoadAction(page))
+  }
+  
+  /**
+   * Dispatches an action to show page
+   */
+  public loadSuccess(model: RestaurantModel): void {
+    this.appState$.dispatch(new productsActions.LoadSuccessAction(model))
   }
 
   /**
@@ -47,7 +55,7 @@ export class ProductsSandbox extends Sandbox {
   /**
    * Dispatches an action to select product details
    */
-  public selectProduct(product: Product): void {
+  public selectProduct(product: Restaurant): void {
     this.appState$.dispatch(new productDetailsActions.LoadSuccessAction(product))
   }
 
@@ -66,7 +74,15 @@ export class ProductsSandbox extends Sandbox {
     this.subscriptions.push(this.culture$.subscribe((culture: string) => this.culture = culture));
 
     this.subscriptions.push(this.loggedUser$.subscribe((user: User) => {
-      if (user.isLoggedIn) this.loadProducts();
-    }))
+      if (user.isLoggedIn) {
+        this.loadProducts(0);
+      }        
+    }));
+
+    this.subscriptions.push(this.products$.subscribe((model: RestaurantModel) => {
+      if (model) {
+        this.loadSuccess(model);
+      }
+    }));
   }
 }

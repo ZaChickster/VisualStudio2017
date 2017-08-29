@@ -3,22 +3,22 @@
   <div class="products-grid-wrapper">
     <ngx-datatable
       class="material striped"
-      [rows]="productsSandbox.products$ | async"
+      [rows]="productsSandbox.products$.pageInstances | async"
       [columns]="[
         { prop: 'name', name: 'ProductDetails.Name' | translate },
-        { prop: 'serialNumber', name: 'ProductDetails.SerialNumber' | translate },
-        { prop: 'warrantyExpiration', name: 'ProductDetails.WarrantyExpiration' | translate },
-        { prop: 'category', name: 'ProductDetails.Category' | translate },
-        { prop: 'price', name: 'ProductDetails.Price' | translate },
-        { prop: 'currency', name: 'ProductDetails.Currency' | translate }
+        { prop: 'restaurant_id', name: 'ProductDetails.Id' | translate },
+        { prop: 'cuisine', name: 'ProductDetails.Cuisine' | translate },
+        { prop: 'borough', name: 'ProductDetails.Borough' | translate }
       ]"
       [columnMode]="'force'"
       [headerHeight]="50"
       [footerHeight]="50"
-      [rowHeight]="43"
-      [limit]="10"
+      [rowHeight]="43"      
+      [count]="productsSandbox.products$.totalRestaurants"
       [selectionType]="'single'"
-      [externalPaging]="false"
+      [externalPaging]="true"
+      [offset]="productsSandbox.products$.currentPage"
+      [limit]="15"
       (select)="onSelect($event)"
       (page)="onPage($event)">
     </ngx-datatable>

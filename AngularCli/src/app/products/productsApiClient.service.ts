@@ -14,9 +14,9 @@ export class ProductsApiClient extends HttpService {
   /**
    * Retrieves all products
    */
-  @GET("/Restaurants")
+  @GET("/Restaurants?page={page}")
   @Adapter(ProductsService.gridAdapter)
-  public getProducts(): Observable<any> { return null; };
+  public getProducts(@Path("page") page: number): Observable<any> { return null; };
 
   /**
    * Retrieves product details by a given id

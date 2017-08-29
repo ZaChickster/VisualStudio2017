@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute }   from '@angular/router';
 import { Subscription }     from "rxjs";
 import { ProductsSandbox }  from './products.sandbox';
-import { Product }          from '../shared/models';
+import { Restaurant }  from '../shared/models';
 
 @Component({
   selector: 'app-product-details',
@@ -18,7 +18,7 @@ import { Product }          from '../shared/models';
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
-  public product:        Product;
+  public restaurant:        Restaurant;
   private subscriptions: Array<Subscription> = [];
 
   constructor(
@@ -39,10 +39,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
    */
   private registerEvents(): void {
     // Subscribes to product details
-    this.subscriptions.push(this.productsSandbox.productDetails$.subscribe((product: any) => {
-      if (product) {
+    this.subscriptions.push(this.productsSandbox.productDetails$.subscribe((restaurant: any) => {
+      if (restaurant) {
         this.changeDetector.markForCheck();
-        this.product = product;
+        this.restaurant = restaurant;
       }
     }));
   }

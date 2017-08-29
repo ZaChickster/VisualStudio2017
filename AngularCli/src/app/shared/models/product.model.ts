@@ -88,15 +88,15 @@ export class Restaurant {
     this.address        = resturant ? new Address(resturant.address) : null;
     this.borough        = resturant ? resturant.borough : '';
     this.cuisine        = resturant ? resturant.cuisine : '';
-    this.grades         = resturant ? resturant.grades.map(grade => new Rating(grade)) : new Array<Rating>();
+    this.grades         = resturant && resturant.grades ? resturant.grades.map(grade => new Rating(grade)) : new Array<Rating>();
     this.name           = resturant ? resturant.name : '';
-    this.restaurant_id  = resturant ? resturant.restaurant_id : 0;
+    this.restaurant_id  = resturant ? parseInt(resturant.restaurant_id) : 0;
   }
 }
 
 export class RestaurantModel {
   public totalRestaurants: number;
-  public pageInstances: Restaurant[];
+  public pageInstances: Array<Restaurant>;
   public currentPage: number;
   public pageSize: number;
   public numberPages: number;
@@ -106,9 +106,9 @@ export class RestaurantModel {
   public showNextPage: boolean;
   
   constructor(page: any = null) {
-    this.totalRestaurants   = page ? page.totalRestaurants : null;
-    this.pageInstances      = page ? page.pageInstances.map(rest => new Restaurant(rest)) : new Array<Restaurant>();
-    this.currentPage        = page ? page.currentPage : 0;
+    this.totalRestaurants   = page ? page.totalRestaurants : 0;
+    this.pageInstances      = page && page.pageInstances ? page.pageInstances.map(rest => new Restaurant(rest)) : [];
+    this.currentPage        = page ? page.currentPage : -1;
     this.pageSize           = page ? page.pageSize : 0;
     this.numberPages        = page ? page.numberPages : 0;
     this.previousPage       = page ? page.previousPage : 0;

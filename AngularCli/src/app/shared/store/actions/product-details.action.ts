@@ -1,6 +1,6 @@
-import { Action }   from '@ngrx/store';
-import { Product }  from '../../models';
-import { type }     from '../../utility';
+import { Action }     from '@ngrx/store';
+import { Restaurant } from '../../models';
+import { type }       from '../../utility';
 
 export const ActionTypes = {
   LOAD:         type('[Product Details] Load'),
@@ -20,7 +20,7 @@ export class LoadAction implements Action {
 export class LoadSuccessAction implements Action {
   type = ActionTypes.LOAD_SUCCESS;
 
-  constructor(public payload: Product) { }
+  constructor(public payload: Restaurant) { }
 }
 
 export class LoadFailAction implements Action {

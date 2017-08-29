@@ -13,7 +13,8 @@ import { ProductDetailsComponent }  from './product-details.component';
 import { ProductsSandbox }          from './products.sandbox';
 import { ProductsApiClient }        from './productsApiClient.service';
 import { ProductsService }          from './products.service';
-import { ProductsResolver }         from './products.resolver';
+import { PageResolver }             from './products.resolver';
+import { DetailsResolver }          from './product-details.resolver';
 
 import { ComponentsModule }         from '../shared/components';
 import { ContainersModule }         from '../shared/containers';
@@ -40,7 +41,8 @@ import { NgxDatatableModule }       from '@swimlane/ngx-datatable';
     ProductsSandbox,
     ProductsService,
     ProductsApiClient,
-    ProductsResolver
+    PageResolver,
+    DetailsResolver
   ]
 })
 export class ProductsModule {}

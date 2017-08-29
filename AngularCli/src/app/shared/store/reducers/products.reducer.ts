@@ -1,18 +1,18 @@
 import * as actions from '../actions/products.action';
-import { Product }  from '../../models';
+import { RestaurantModel }  from '../../models';
 
 export interface State {
   loading: boolean;
   loaded:  boolean;
   failed:  boolean;
-  data:    Array<Product>;
+  data:    RestaurantModel;
 };
 
 const INITIAL_STATE: State = {
   loading: false,
   loaded:  false,
   failed:  false,
-  data:    []
+  data:    new RestaurantModel()
 };
 
 export function reducer(state = INITIAL_STATE, action: actions.Actions): State {
@@ -39,7 +39,7 @@ export function reducer(state = INITIAL_STATE, action: actions.Actions): State {
         loaded:   false,
         loading:  false,
         failed:   true,
-        data:     []
+        data:     new RestaurantModel()
       });
     }
 
@@ -49,7 +49,9 @@ export function reducer(state = INITIAL_STATE, action: actions.Actions): State {
   }
 };
 
-export const getData    = (state: State) => state.data;
+export const getData    = (state: State) => {
+  return state.data
+};
 export const getLoading = (state: State) => state.loading;
 export const getLoaded  = (state: State) => state.loaded;
 export const getFailed  = (state: State) => state.failed;

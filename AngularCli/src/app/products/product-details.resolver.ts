@@ -6,9 +6,9 @@ import {
 import { ProductsSandbox }  from './products.sandbox';
 
 @Injectable()
-export class PageResolver implements Resolve<any> {
+export class DetailsResolver implements Resolve<any> {
 
-  private pageSubscription;
+  private detailsSubscription;
 
   constructor(public productsSandbox: ProductsSandbox) {}
 
@@ -19,15 +19,15 @@ export class PageResolver implements Resolve<any> {
    * @param route
    */
   public resolve(route: ActivatedRouteSnapshot) {
-    if (this.pageSubscription) return;
+    if (this.detailsSubscription) return;
 
-    this.pageSubscription = this.productsSandbox.products$.subscribe(model => {
-      if (!model || model.currentPage < 0) {
-        this.productsSandbox.loadProducts(parseInt(route.params.page));
+    this.detailsSubscription = this.productsSandbox.productDetails$.subscribe(product => {
+      if (!product) {
+        this.productsSandbox.loadProductDetails(parseInt(route.params.id));
         return;
       }
 
-      this.productsSandbox.loadSuccess(model);
+      this.productsSandbox.selectProduct(product);
     });
   }
 }

@@ -43,8 +43,10 @@ export class ProductsEffects {
     .ofType(productsActions.ActionTypes.LOAD)
     .map((action: productsActions.LoadAction) => action.payload)
     .switchMap(state => {
-      return this.productsApiClient.getProducts()
-        .map(products => new productsActions.LoadSuccessAction(products))
+      return this.productsApiClient.getProducts(state)
+        .map(products => {
+          return new productsActions.LoadSuccessAction(products);
+        })
         .catch(error  => of(new productsActions.LoadFailAction()));
     });
 

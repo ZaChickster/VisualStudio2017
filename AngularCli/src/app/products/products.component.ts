@@ -5,7 +5,7 @@ import {
 import { Router }           from '@angular/router';
 import { Subscription }     from "rxjs";
 import { ProductsSandbox }  from './products.sandbox';
-import { Product }          from '../shared/models';
+import { Restaurant }       from '../shared/models';
 
 @Component({
   selector: 'app-products',
@@ -35,7 +35,8 @@ export class ProductsComponent {
    * 
    * @param pageInfo
    */
-  public onPage(pageInfo): void {
-    this.router.navigate(['/products', 1 + pageInfo.offset]);
+  public onPage({ offset }): void {
+    this.productsSandbox.loadProducts(1 + offset)
+    this.router.navigate(['/products', 1 + offset]);
   }  
 }

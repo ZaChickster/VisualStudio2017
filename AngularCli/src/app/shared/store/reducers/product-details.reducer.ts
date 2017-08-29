@@ -1,11 +1,11 @@
 import * as actions from '../actions/product-details.action';
-import { Product }  from '../../models';
+import { Restaurant }  from '../../models';
 
 export interface State {
   loading: boolean;
   loaded:  boolean;
   failed:  boolean;
-  data:    Product;
+  data:    Restaurant;
 };
 
 const INITIAL_STATE: State = {
