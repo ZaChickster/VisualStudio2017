@@ -1,0 +1,42 @@
+<app-layout>
+    <h1>{{ 'ProductDetails.Title' | translate }}</h1>
+    <div class="callout large">
+      <h3>{{ product?.name }}</h3>
+
+      <div class="productDetails-contentWrapper">
+        <div class="columns">
+          <h5>{{ 'ProductDetails.SerialNumber' | translate }}</h5>
+          <p>{{ product?.serialNumber }}</p>
+        </div>
+
+        <div class="columns">
+          <h5>{{ 'ProductDetails.Category' | translate }}</h5>
+          <p>{{ product?.category }}</p>
+        </div>
+
+        <div class="columns">
+          <h5>{{ 'ProductDetails.Description' | translate }}</h5>
+          <p>{{ product?.description }}</p>
+        </div>
+
+        <div class="columns">
+          <h5>{{ 'ProductDetails.WarrantyExpiration' | translate }}</h5>
+          <p>{{ productsSandbox.formatDate(product?.warrantyExpiration) }}</p>
+        </div>
+
+        <div class="columns">
+          <h5>{{ 'ProductDetails.Price' | translate }}</h5>
+          <p>{{ product?.price }} {{ product?.currency }}</p>
+        </div>
+      </div>
+
+      <a routerLink="/products">
+        <button type="button" class="button basic-btn productDetails-backBtn">
+          <strong><</strong> {{ 'BackBtn' | translate }}
+        </button>
+      </a>
+
+      <spinner [isRunning]="productsSandbox.productDetailsLoading$ | async"></spinner>
+      
+    </div>
+  </app-layout>
