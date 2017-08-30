@@ -34,6 +34,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  backClicked() {
+    history.back();
+  }
+
   /**
    * Registers events
    */

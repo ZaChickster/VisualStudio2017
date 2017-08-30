@@ -37,7 +37,7 @@ export class PageResolver implements Resolve<any> {
         var parsed = parseInt(routeEnd);
         var requested : number = isNaN(parsed) ? 0 : parsed;
 
-        if (this.productsSandbox.currentPage !== requested) {
+        if (this.productsSandbox.currentPage !== requested && requested > 0) {
           this.productsSandbox.loadProducts(requested - 1);
         }  
       }            
