@@ -23,7 +23,7 @@ const productsRoutes: Routes = [
       name: 'product-list'
     },
     resolve: {
-      productDetails: PageResolver
+      products: PageResolver
     },
     canActivate: [AuthGuard]
   },
