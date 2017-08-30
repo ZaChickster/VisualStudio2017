@@ -22,9 +22,9 @@ namespace VisualStudio2017.Angular4.Controllers
 			return new RestaurantsIndex
 			{
 				TotalRestaurants = await _mongo.GetCount(),
-				PageInstances = await _mongo.GetRestaurants(15, page ?? 0),
+				PageInstances = await _mongo.GetRestaurants(10, page ?? 0),
 				CurrentPage = page ?? 0,
-				PageSize = 15
+				PageSize = 10
 			};
 		}
 

@@ -27,7 +27,7 @@ export class ProductsComponent {
    */
   public onSelect({ selected }): void {
     this.productsSandbox.selectProduct(selected[0]);
-    this.router.navigate(['/product', selected[0].id]);
+    this.router.navigate(['/product', selected[0].restaurant_id]);
   }
 
     /**

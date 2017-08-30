@@ -15,11 +15,16 @@ import {
 @Injectable()
 export class ProductsSandbox extends Sandbox {
 
-  public products$              = this.appState$.select(store.getProductsData);
+  public model$                 = this.appState$.select(store.getProductsData);
   public productsLoading$       = this.appState$.select(store.getProductsLoading);
   public productDetails$        = this.appState$.select(store.getProductDetailsData);
   public productDetailsLoading$ = this.appState$.select(store.getProductDetailsLoading);
   public loggedUser$            = this.appState$.select(store.getLoggedUser);
+
+  public instances: Restaurant[] = [];
+  public total: number = 0;
+  public currentPage: number = 0;
+  public pageSize: number = 0;
 
   private subscriptions: Array<Subscription> = [];
 
@@ -79,10 +84,13 @@ export class ProductsSandbox extends Sandbox {
       }        
     }));
 
-    this.subscriptions.push(this.products$.subscribe((model: RestaurantModel) => {
+    this.subscriptions.push(this.model$.subscribe((model: RestaurantModel) => {
       if (model) {
-        this.loadSuccess(model);
-      }
+        this.instances = model.pageInstances;
+        this.total = model.totalRestaurants;
+        this.currentPage = model.currentPage;
+        this.pageSize = model.pageSize;
+      }        
     }));
   }
 }

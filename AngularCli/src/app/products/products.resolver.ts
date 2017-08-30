@@ -21,7 +21,7 @@ export class PageResolver implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot) {
     if (this.pageSubscription) return;
 
-    this.pageSubscription = this.productsSandbox.products$.subscribe(model => {
+    this.pageSubscription = this.productsSandbox.model$.subscribe(model => {
       if (!model || model.currentPage < 0) {
         this.productsSandbox.loadProducts(parseInt(route.params.page));
         return;

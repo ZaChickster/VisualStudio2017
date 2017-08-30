@@ -3,7 +3,7 @@
   <div class="products-grid-wrapper">
     <ngx-datatable
       class="material striped"
-      [rows]="productsSandbox.products$.pageInstances | async"
+      [rows]="productsSandbox.instances"
       [columns]="[
         { prop: 'name', name: 'ProductDetails.Name' | translate },
         { prop: 'restaurant_id', name: 'ProductDetails.Id' | translate },
@@ -14,10 +14,10 @@
       [headerHeight]="50"
       [footerHeight]="50"
       [rowHeight]="43"      
-      [count]="productsSandbox.products$.totalRestaurants"
+      [count]="productsSandbox.total"
       [selectionType]="'single'"
       [externalPaging]="true"
-      [offset]="productsSandbox.products$.currentPage"
+      [offset]="productsSandbox.currentPage"
       [limit]="15"
       (select)="onSelect($event)"
       (page)="onPage($event)">
