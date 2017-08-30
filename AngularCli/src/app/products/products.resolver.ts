@@ -23,7 +23,7 @@ export class PageResolver implements Resolve<any> {
 
     this.pageSubscription = this.productsSandbox.model$.subscribe(model => {
       if (!model || model.currentPage < 0) {
-        this.productsSandbox.loadProducts(parseInt(route.params.page));
+        this.productsSandbox.loadProducts(parseInt(route.params.page) - 1);
         return;
       }
 

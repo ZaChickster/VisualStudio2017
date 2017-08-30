@@ -36,7 +36,7 @@ export class ProductsComponent {
    * @param pageInfo
    */
   public onPage({ offset }): void {
-    this.productsSandbox.loadProducts(1 + offset)
-    this.router.navigate(['/products', 1 + offset]);
+    this.productsSandbox.loadProducts(offset)
+    this.router.navigate(['/products', offset + 1]);
   }  
 }
