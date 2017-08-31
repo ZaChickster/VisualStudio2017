@@ -81,6 +81,6 @@ export class AuthSandbox extends Sandbox {
    * @param user
    */
   static authAdapter(user: any): any {
-    return Object.assign({}, user, { email: user.Email});
+    return user;
   }
 }
