@@ -38,7 +38,7 @@ namespace VisualStudio2017.Backend.Test.Data
 		public void Should_GetRestaurant_FromMongoDB()
 		{
 			MongoDBContext ctx = new MongoDBContext();
-			Restaurant found = ctx.GetRestaurant("41717146").Result;
+			Restaurant found = ctx.GetRestaurant("40698892").Result;
 
 			Assert.IsNotNull(found);
 		}
@@ -47,17 +47,17 @@ namespace VisualStudio2017.Backend.Test.Data
 		public void Should_UpdateRestaurant_ViaMongoDB()
 		{
 			MongoDBContext ctx = new MongoDBContext();
-			Restaurant initial = ctx.GetRestaurant("41717146").Result;
+			Restaurant initial = ctx.GetRestaurant("40698892").Result;
 			string originalName = initial.name;
 
 			initial.name = "Hi; I'm Updated";
 			ModificationResult changeName = ctx.UpdateRestaurant(initial).Result;
-			Restaurant updated = ctx.GetRestaurant("41717146").Result;
+			Restaurant updated = ctx.GetRestaurant("40698892").Result;
 			string updatedName = updated.name;
 
 			updated.name = originalName;
 			ModificationResult revert = ctx.UpdateRestaurant(updated).Result;
-			Restaurant reverted = ctx.GetRestaurant("41717146").Result;
+			Restaurant reverted = ctx.GetRestaurant("40698892").Result;
 
 			Assert.IsTrue(changeName.ModifiedCount == 1);
 			Assert.IsTrue(updatedName == "Hi; I'm Updated");

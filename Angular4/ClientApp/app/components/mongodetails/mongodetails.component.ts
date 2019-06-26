@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { Restaurant, MongoDetailModel } from '../../models/interfaces';
 import { MongoDataService } from '../../services/mongodata.service';
 
@@ -13,7 +12,7 @@ export class MongoDetailsComponent {
     _service: MongoDataService;
     _route: ActivatedRoute;
 
-    constructor(mongo: MongoDataService, route: ActivatedRoute, location: Location) {
+    constructor(mongo: MongoDataService, route: ActivatedRoute) {
         this.model = {} as MongoDetailModel;
         this._service = mongo;
         this._route = route;
