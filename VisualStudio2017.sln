@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular4", "Angular4\Angular4.csproj", "{92F84F8C-2DBE-453E-B49C-6F7023DF4791}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular4.Tests", "Angular4.Tests\Angular4.Tests.csproj", "{F9AA1D9A-85E8-4BBA-B440-50981A1E9505}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueJs", "VueJs\VueJs.csproj", "{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactRedux", "ReactRedux\ReactRedux.csproj", "{F3D23A39-AF2F-415C-B508-2FE405371BD9}"
 EndProject
@@ -31,10 +29,6 @@ Global
 		{F9AA1D9A-85E8-4BBA-B440-50981A1E9505}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9AA1D9A-85E8-4BBA-B440-50981A1E9505}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9AA1D9A-85E8-4BBA-B440-50981A1E9505}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53F58B4D-392F-407A-8FA4-6BB8BFA9D006}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3D23A39-AF2F-415C-B508-2FE405371BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3D23A39-AF2F-415C-B508-2FE405371BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D23A39-AF2F-415C-B508-2FE405371BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU

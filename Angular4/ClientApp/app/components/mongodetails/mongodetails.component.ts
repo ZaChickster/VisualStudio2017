@@ -24,7 +24,7 @@ export class MongoDetailsComponent {
         me._url = '/api/Restaurant';
 
         route.params.subscribe(params => {
-            me.updateModel(params['id'])
+            me.updateModel(params['id']);
         });
     }
 
@@ -32,7 +32,7 @@ export class MongoDetailsComponent {
         var url = '';
 
         if (id) {
-            url = this._url + '?id=' + id;
+            url = `${this._url}?id=${id}`;
 
             this._http.get(url).subscribe(result => {
                 this.model.data = result.json() as Restaurant;

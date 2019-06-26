@@ -26,7 +26,7 @@ namespace VisualStudio2017.Angular4.Controllers
 		[HttpPost("logout")]
 		public string Logout()
 		{
-			return "success";
+			return "it worked";
 		}
     }
 }

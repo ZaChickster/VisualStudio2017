@@ -13,6 +13,7 @@ import { MongoComponent } from './components/mongo/mongo.component';
 import { MongoDetailsComponent } from './components/mongodetails/mongodetails.component';
 import { ToDoComponent } from './components/todo/todo.component';
 import { ToDoDetailsComponent } from './components/tododetails/tododetails.component';
+import { MongoDataService } from './services/mongodata.service';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { ToDoDetailsComponent } from './components/tododetails/tododetails.compo
             { path: 'todo/details/:id', component: ToDoDetailsComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+    ], 
+    providers: [ MongoDataService ]
 })
 export class AppModuleShared {
 }

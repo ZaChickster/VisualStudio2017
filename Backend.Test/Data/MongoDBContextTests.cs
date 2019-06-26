@@ -29,7 +29,7 @@ namespace VisualStudio2017.Backend.Test.Data
 		public void Should_GetRestaurants_FromMongoDB_LaterPage()
 		{
 			MongoDBContext ctx = new MongoDBContext();
-			List<Restaurant> found = ctx.GetRestaurants(50, 75).Result;
+			List<Restaurant> found = ctx.GetRestaurants(50, 19).Result;
 
 			Assert.IsTrue(found.Count == 50);
 		}
