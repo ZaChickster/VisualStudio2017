@@ -46,3 +46,8 @@ export interface RestaurantModel {
     nextPage: number;
     showNextPage: boolean;
 }
+
+export interface MongoDetailModel {
+    data: Restaurant;
+    message: string;
+}

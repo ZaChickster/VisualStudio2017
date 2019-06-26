@@ -13,17 +13,16 @@ export class MongoComponent {
     model: RestaurantModel;
 
     constructor(mongo: MongoDataService, route: ActivatedRoute) {
-        const me = this;
-        me.service = mongo;
+        this.service = mongo;
 
         route.params.subscribe(params => {
             const page = + params['page']; // (+) converts string 'id' to a number
-            me.getPageData(page);
+            this.getPageData(page);
         });
     }
 
     getPageData(page : number) {
-        this.service.getMongoPage(page).subscribe((page: RestaurantModel) => {
+        this.service.getPage(page).subscribe((page: RestaurantModel) => {
             this.model = page;
         });
     }
